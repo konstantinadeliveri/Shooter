@@ -140,7 +140,7 @@ body {
 		    upgrade.setAll('scale.y', 1);
 			
 		    game.time.events.add(1000, launchFirstEnemy);
-            game.time.events.add(3000, launchAsteroid);
+                    game.time.events.add(3000, launchAsteroid);
 			
 			//enemies 2
 		    secondEnemy = game.add.group();
@@ -234,7 +234,7 @@ body {
 				
 				var firingDelay = 100;
 				
-				bossBullet = bossBullet.getFirstExists(false);
+				bossBullet = headbossBullet.getFirstExists(false);
 				
 				if (bossBullet && game.time.now > firingDelay) {
 					bossBullet.reset(boss.x, boss.y);
