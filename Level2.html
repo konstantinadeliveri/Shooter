@@ -48,8 +48,8 @@ body {
 		var bossSpacing = 20000;
 		var bossBulletTimer = 0;
 		var bossYdirection = -1;
-        var asteroidLaunchTimer;
-        var asteroidSpacing = 700;
+                var asteroidLaunchTimer;
+                var asteroidSpacing = 700;
 		var ACCLERATION = 2000;
 		var DRAG = 1500;
 		var MAXSPEED = 400;
@@ -62,7 +62,7 @@ body {
 		function preload() {
 			//  We need this because the assets are on github pages
 			//  Remove the next 2 lines if running locally
-		    game.load.baseURL = 'https://konstantinadeliveri.github.io/Shooter/';
+		     game.load.baseURL = 'https://konstantinadeliveri.github.io/Shooter/';
 			game.load.crossOrigin = 'anonymous';
 			game.load.image('starfield', 'assets/starfield.png');
 			game.load.image('ship', 'assets/ship.png');
@@ -72,7 +72,7 @@ body {
 			game.load.image('secondEnemyBullet', 'assets/bullets/blue-enemy-bullet.png');
 			game.load.image('bossBullets', 'assets/bullets/bullet1.png');
 			game.load.image('powerUp', 'assets/upgrade.png');
-            game.load.image('asteroid', 'assets/upgrades/asteroid.png');
+                        game.load.image('asteroid', 'assets/upgrades/asteroid.png');
 			game.load.image('boss', 'assets/enemies/boss.png');
 			game.load.spritesheet('explosion', 'assets/explode.png', 128, 128);
 			game.load.bitmapFont('customfont', 'assets/spacefont/spacefont.png', 'assets/spacefont/spacefont.xml');
@@ -143,7 +143,7 @@ body {
             game.time.events.add(3000, launchAsteroid);
 			
 			//enemies 2
-			secondEnemy = game.add.group();
+		    secondEnemy = game.add.group();
 		    secondEnemy.enableBody = true;
 		    secondEnemy.physicsBodyType = Phaser.Physics.ARCADE;
 		    secondEnemy.createMultiple(30, 'secondEnemy');
@@ -156,27 +156,27 @@ body {
 		        enemy.damageAmount = 40;
 		    });
             
-            asteroid = game.add.group();
-		    asteroid.enableBody = true;
-		    asteroid.physicsBodyType = Phaser.Physics.ARCADE;
-		    asteroid.createMultiple(15, 'asteroid');
-		    asteroid.setAll('anchor.x', 0.5);
-		    asteroid.setAll('anchor.y', 0.5);
-		    asteroid.setAll('scale.x', 0.5);
-		    asteroid.setAll('scale.y', 0.5);
-		    asteroid.forEach(function(asteroid){
-		        asteroid.damageAmount = 10;
+                    problem = game.add.group();
+		    problem.enableBody = true;
+		    problem.physicsBodyType = Phaser.Physics.ARCADE;
+		    problem.createMultiple(10, 'asteroid');
+		    problem.setAll('anchor.x', 0.5);
+		    problem.setAll('anchor.y', 0.5);
+		    problem.setAll('scale.x', 0.5);
+		    problem.setAll('scale.y', 0.5);
+		    problem.forEach(function(planet){
+		        problem.damageAmount = 10;
                 
 		    });
 			// boss bullets
-			bossBullet = game.add.group();
-			bossBullet.enableBody = true;
-			bossBullet.physicsBodyType = Phaser.Physics.ARCADE;
-			bossBullet.createMultiple(30, 'bossBullets');
-			bossBullet.setAll('anchor.x', 0.5);
-			bossBullet.setAll('anchor.y', 1);
-			bossBullet.setAll('outOfBoundsKill', true);
-			bossBullet.setAll('checkWorldBounds', true);
+			headbossBullet = game.add.group();
+			headbossBullet.enableBody = true;
+			headbossBullet.physicsBodyType = Phaser.Physics.ARCADE;
+			headbossBullet.createMultiple(30, 'bossBullets');
+			headbossBullet.setAll('anchor.x', 0.5);
+			headbossBullet.setAll('anchor.y', 1);
+			headbossBullet.setAll('outOfBoundsKill', true);
+			headbossBullet.setAll('checkWorldBounds', true);
 			
 			//  The boss
 			boss = game.add.sprite(0, 0, 'boss');
@@ -423,10 +423,10 @@ body {
 			game.physics.arcade.overlap(enemyBullets, player, enemyHitsPlayer, null, this);
 			game.physics.arcade.overlap(player, upgrade, pickUpgrade, null, this);
 			game.physics.arcade.overlap(boss, bullets, hitEnemy, bossHitTest, this);
-			game.physics.arcade.overlap(player, bossBullet, enemyHitsPlayer, null, this);
+			game.physics.arcade.overlap(player, headbossBullet, enemyHitsPlayer, null, this);
 			game.physics.arcade.overlap(player, boss, shipCollide, null, this);
-                        game.physics.arcade.overlap(player, asteroid, shipCollide, null, this);
-                        game.physics.arcade.overlap(asteroid, bullets, hitEnemy, null, this);
+                        game.physics.arcade.overlap(player, problem, shipCollide, null, this);
+                        game.physics.arcade.overlap(problem, bullets, hitEnemy, null, this);
 			
 			//  Game over?
 		    if (! player.alive && gameOver.visible === false) {
@@ -464,7 +464,7 @@ body {
 		}
         function launchAsteroid () { 
             var asteroidSpeed = 200;
-            var asteroid = asteroid.getFirstExists(false);
+            var problem = asteroid.getFirstExists(false);
            
             if (asteroid) {
                 asteroid.reset(game.width, game.rnd.integerInRange(0, game.height));
@@ -473,7 +473,7 @@ body {
                 asteroid.body.drag.y = 100;
                 
                 asteroid.update = function(){
-                    asteroid.angle = 270 - game.math.radToDeg(Math.atan2(asteroid.body.velocity.x, asteroid.body.velocity.y));
+                asteroid.angle = 270 - game.math.radToDeg(Math.atan2(asteroid.body.velocity.x, asteroid.body.velocity.y));
                     
                     //  Kill pickup once off screen
                     if (asteroid.x == 0) {
