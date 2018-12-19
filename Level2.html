@@ -320,9 +320,15 @@ body {
 					Phaser.Easing.Quintic.Out);
 			shipTrail.start(false, 5000, 10);
 			
+			
+			music = game.sound.play('background');
 			shoot = game.add.audio('shoot');
 			explosion = game.add.audio('explosion');
 			powerUp = game.add.audio('powerUp');
+			
+			music.volume = 0.2;
+			music.loop = true;
+			music.play();
 			
 			//  An explosion pool
 		    explosions = game.add.group();
