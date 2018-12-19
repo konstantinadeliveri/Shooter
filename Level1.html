@@ -216,7 +216,7 @@ body {
 				
 				var firingDelay = 100;
 				
-				bossBullet = bossBullet.getFirstExists(false);
+				bossBullet = headbossBullet.getFirstExists(false);
 				
 				if (bossBullet && game.time.now > firingDelay) {
 					bossBullet.reset(boss.x, boss.y);
