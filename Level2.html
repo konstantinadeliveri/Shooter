@@ -416,17 +416,17 @@ body {
 			shipTrail.y = player.y;
 			shipTrail.x = player.x - 20;
 			//  Check collisions
-    		game.physics.arcade.overlap(player, firstEnemy, shipCollide, null, this);
+    		        game.physics.arcade.overlap(player, firstEnemy, shipCollide, null, this);
 			game.physics.arcade.overlap(firstEnemy, bullets, hitEnemy, null, this);
 			game.physics.arcade.overlap(player, secondEnemy, shipCollide, null, this);
 			game.physics.arcade.overlap(secondEnemy, bullets, hitEnemy, null, this);
 			game.physics.arcade.overlap(enemyBullets, player, enemyHitsPlayer, null, this);
-			game.physics.arcade.overlap(player, upgrade, upgradePickup, null, this);
+			game.physics.arcade.overlap(player, upgrade, pickUpgrade, null, this);
 			game.physics.arcade.overlap(boss, bullets, hitEnemy, bossHitTest, this);
 			game.physics.arcade.overlap(player, bossBullet, enemyHitsPlayer, null, this);
 			game.physics.arcade.overlap(player, boss, shipCollide, null, this);
-            game.physics.arcade.overlap(player, asteroid, shipCollide, null, this);
-            game.physics.arcade.overlap(asteroid, bullets, hitEnemy, null, this);
+                        game.physics.arcade.overlap(player, asteroid, shipCollide, null, this);
+                        game.physics.arcade.overlap(asteroid, bullets, hitEnemy, null, this);
 			
 			//  Game over?
 		    if (! player.alive && gameOver.visible === false) {
@@ -658,7 +658,7 @@ body {
             var upgradeWeaponSpeed = 400;
             var upgradePickup = upgrade.getFirstExists(false);
             if (upgradePickup) {
-                console.log("launchWeaponPowerUp");
+                console.log("launchUpgrade");
                 upgradePickup.reset(game.width, game.rnd.integerInRange(0, game.height));
                 upgradePickup.body.velocity.y = game.rnd.integerInRange(-300, 300);
                 upgradePickup.body.velocity.x = -upgradeWeaponSpeed;
