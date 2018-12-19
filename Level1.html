@@ -151,15 +151,14 @@ body {
 		        enemy.damageAmount = 40;
 		    });
 			// boss bullets
-			bossBullet = game.add.group();
-			bossBullet.enableBody = true;
-			bossBullet.physicsBodyType = Phaser.Physics.ARCADE;
-			bossBullet.createMultiple(30, 'bossBullets');
-			bossBullet.setAll('anchor.x', 0.5);
-			bossBullet.setAll('anchor.y', 1);
-			bossBullet.setAll('outOfBoundsKill', true);
-			bossBullet.setAll('checkWorldBounds', true);
-			
+			headbossBullet = game.add.group();
+			headbossBullet.enableBody = true;
+			headbossBullet.physicsBodyType = Phaser.Physics.ARCADE;
+			headbossBullet.createMultiple(30, 'bossBullets');                  
+			headbossBullet.setAll('anchor.x', 0.5);
+			headbossBullet.setAll('anchor.y', 1);
+			headbossBullet.setAll('outOfBoundsKill', true);
+			headbossBullet.setAll('checkWorldBounds', true);
 			//  The boss
 			boss = game.add.sprite(0, 0, 'boss');
 			boss.exists = false;
@@ -180,7 +179,7 @@ body {
 					bossDeath.y = boss.y;
 					bossDeath.start(false, 1000, 50, 20);
 					
-					//  kill boss after explotions
+					//  kill boss 
 					game.time.events.add(1000, function() {
 						var explosion = explosions.getFirstExists(false);
 						var beforeScaleX = explosions.scale.x;
@@ -407,7 +406,7 @@ body {
 			shipTrail.x = player.x - 20;
 			
 			//  Check collisions
-    		game.physics.arcade.overlap(player, firstEnemy, shipCollide, null, this);
+    		        game.physics.arcade.overlap(player, firstEnemy, shipCollide, null, this);
 			game.physics.arcade.overlap(firstEnemy, bullets, hitEnemy, null, this);
 			game.physics.arcade.overlap(player, secondEnemy, shipCollide, null, this);
 			game.physics.arcade.overlap(secondEnemy, bullets, hitEnemy, null, this);
