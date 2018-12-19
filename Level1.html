@@ -412,7 +412,7 @@ body {
 			game.physics.arcade.overlap(player, secondEnemy, shipCollide, null, this);
 			game.physics.arcade.overlap(secondEnemy, bullets, hitEnemy, null, this);
 			game.physics.arcade.overlap(enemyBullets, player, enemyHitsPlayer, null, this);
-			game.physics.arcade.overlap(player, upgrade, upgradePickup, null, this);
+			game.physics.arcade.overlap(player, upgrade, pickUpgrade, null, this);
 			game.physics.arcade.overlap(boss, bullets, hitEnemy, bossHitTest, this);
 			game.physics.arcade.overlap(player, bossBullet, enemyHitsPlayer, null, this);
 			game.physics.arcade.overlap(player, boss, shipCollide, null, this);
