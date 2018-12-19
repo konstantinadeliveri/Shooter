@@ -464,7 +464,7 @@ body {
 		}
         function launchAsteroid () { 
             var asteroidSpeed = 200;
-            var problem = asteroid.getFirstExists(false);
+            var asteroid = problem.getFirstExists(false);
            
             if (asteroid) {
                 asteroid.reset(game.width, game.rnd.integerInRange(0, game.height));
