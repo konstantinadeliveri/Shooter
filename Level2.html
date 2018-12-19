@@ -515,7 +515,7 @@ body {
 							game.physics.arcade.velocityFromAngle(bullet.angle, BULLET_SPEED, bullet.body.velocity);
 							bullet.body.velocity.y += player.body.velocity.y;
 							bulletTimer = game.time.now + BULLET_SPACING;
-							shot.play();
+							shoot.play();
 						}
 					}
 					break;
@@ -543,7 +543,7 @@ body {
 								bullet.angle = player.angle + spreadAngle;
 								game.physics.arcade.velocityFromAngle(spreadAngle, BULLET_SPEED, bullet.body.velocity);
 								bullet.body.velocity.y += player.body.velocity.y;
-								shot.play();
+								shoot.play();
 							}
 							bulletTimer = game.time.now + BULLET_SPACING;
 						}
@@ -580,7 +580,7 @@ body {
                             bullet.angle = player.angle + spreadAngle;
                             game.physics.arcade.velocityFromAngle(spreadAngle, BULLET_SPEED, bullet.body.velocity);
                             bullet.body.velocity.y += player.body.velocity.y;
-                            shot.play();
+                            shoot.play();
                         }
                         bulletTimer = game.time.now + BULLET_SPACING;
                     }
@@ -622,7 +622,7 @@ body {
                             bullet.angle = player.angle + spreadAngle;
                             game.physics.arcade.velocityFromAngle(spreadAngle, BULLET_SPEED, bullet.body.velocity);
                             bullet.body.velocity.y += player.body.velocity.y;
-                            shot.play();
+                            shoot.play();
                         }
                         bulletTimer = game.time.now + BULLET_SPACING;
                     }
